@@ -1,0 +1,45 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "MysticBox 2.0 - Register";
+}
+<div class="container-fluid">
+    <div class="row justify-content-center" style="padding-top:30px;">
+        <div class="" style="background-color:#2A2A2C; width:400px; border-radius: 15px;">
+            <form asp-route-returnUrl="@ViewData[" ReturnUrl"]" method="post" style="text-align:center; margin: 0 auto; width:315px;">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InvitationCode"></label>
+                    <input asp-for="InvitationCode" class="form-control" value="evmfg88ndmnj88fseil88" />
+                    <span class="text-danger">@Html.ValidationMessage("ValidationError")</span>
+                    <span asp-validation-for="InvitationCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default" style="width:60%;">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

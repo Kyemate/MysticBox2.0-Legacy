@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ImageModel>
+
+@{
+    ViewData["Title"] = "MysticBox 2.0";
+}
+@*<span class="glyphicon glyphicon-remove"></span>*@
+<div class="table-responsive">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Mime Type</th>
+                <th scope="col">Date</th>
+                <th scope="col">Size</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <a href="~/u/@(item.Name)">@Html.DisplayFor(modelItem => item.OriginalName)</a>
+                </td>
+                <td>
+                    @item.ContentType
+                </td>
+                <td>
+                    @(item.UploadDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture))
+                </td>
+                <td>
+                    @(item.Size / 1024)KB
+                </td>
+                <td class="delete">
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-name="@item.Name" asp-route-mimeType="1">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

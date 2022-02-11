@@ -1,0 +1,30 @@
+﻿@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<li>
+    @*<form method="post" enctype="multipart/form-data" asp-controller="Upload" asp-action="Upload" asp-route-key="@UserManager.GetUserAsync(User).Result.UploadKey" asp-route-returnUrl="~@(Context.Request.Path)">
+        <label class="nav-link nav" style="cursor: pointer;">
+            <input type="file" style="display: none;" name="file" onchange="this.form.submit()" />
+            <input type="file" style="display: none;" name="file" multiple onchange="uploadFiles('files');" />
+            Upload
+        </label>
+    </form>*@
+    <form id="form" name="form" asp-controller="Upload" asp-action="Upload" asp-route-key="@UserManager.GetUserAsync(User).Result.UploadKey" asp-route-returnUrl="~@(Context.Request.Path)" enctype="multipart/form-data" method="post">
+        <div class="buttons">
+            <div class="upload-button">
+                <div class="label">Click me!</div>
+                <input id="files" name="files" type="file" size="1" multiple onchange="uploadFiles('files');" />
+            </div>
+        </div>
+    </form>
+    <div id="progress" class="progress"><div id="bar" class="bar"></div><div id="label" class="label">0%</div></div>
+</li>
+    <li>
+        <a class="nav-link" href="~/Account/Index">@UserManager.GetUserName(User)</a>
+    </li>
+    <li>
+        <a class="nav-link" href="~/logout">Logout</a>
+    </li>
+}

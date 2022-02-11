@@ -1,0 +1,18 @@
+﻿@inject SignInManager<AppUser> SignInManager
+@*Make current page active color*@
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Home" asp-action="Index">Images</a>
+        </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Home" asp-action="AudioVideos">Audio & Videos</a>
+    </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Home" asp-action="Documents">Documents</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Home" asp-action="Files">Files</a>
+        </li>
+}
+
